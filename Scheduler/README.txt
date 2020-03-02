@@ -1,0 +1,1 @@
+This is a scheduler that was built for school.  It pulls data from a SQL server to populate a table that can be used by the user.  The login and password are both 'test'.
