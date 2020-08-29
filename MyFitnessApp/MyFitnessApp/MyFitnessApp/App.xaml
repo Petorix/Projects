@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFitnessApp.App">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#002F51</Color>
+            <Color x:Key="OffWhite">#CCC</Color>
+            <!--<Color x:Key="Primary">#2196F3</Color>-->
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource OffWhite}" />
+                <Setter Property="HeightRequest" Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
