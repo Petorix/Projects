@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFitnessApp.Views.UserDetailView"
+             xmlns:behaviors="clr-namespace:BehaviorEvents"
+             Title="{Binding Title}"
+             Shell.NavBarIsVisible="True" >
+    
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{StaticResource OffWhite}">
+            <StackLayout Padding="5">
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Username" FontSize="Medium" />
+                    <Entry Placeholder="Username" FontSize="Medium" Text="{Binding UserName, Mode=TwoWay}" >
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Starting weight" FontSize="Medium"  />
+                    <Entry Placeholder="Starting weight" Keyboard="Numeric" FontSize="Medium" Text="{Binding StartingWeight, Mode=TwoWay}">
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding StartingWeightChanged}" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Current weight" FontSize="Medium" Margin="0,10,0,0" />
+                    <Entry Placeholder="Current weight" Keyboard="Numeric" FontSize="Medium" Text="{Binding CurrentWeight, Mode=TwoWay}">
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding CurrentWeightChanged}" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Height" FontSize="Medium" Margin="0,10,0,0" />
+                    <Entry Placeholder="Height" Keyboard="Numeric" FontSize="Medium" Text="{Binding Height, Mode=TwoWay}">
+                        <Entry.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Gender" FontSize="Medium" Margin="0,10,0,0" />
+                    <Picker SelectedIndex="{Binding Gender, Mode=TwoWay}" ItemsSource="{Binding GenderList}" Title="Your gender" FontSize="Medium">
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </Picker.Behaviors>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Activity level" FontSize="Medium" Margin="0,10,0,0" />
+                    <Picker SelectedIndex="{Binding StartingFitnessLevel, Mode=TwoWay}" ItemsSource="{Binding ActivityLevelList}" 
+                    Title="What is your current activity level?" FontSize="Medium" >
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </Picker.Behaviors>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Workout timeframe" FontSize="Medium" Margin="0,10,0,0" />
+                    <Picker SelectedIndex="{Binding WorkoutTimeFrame, Mode=TwoWay}" ItemsSource="{Binding WorkoutTimeFrameList}" 
+                    Title="How much time do you have for exercise?" FontSize="Medium">
+                        <Picker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </Picker.Behaviors>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <Label Text="Birthday" FontSize="Medium" Margin="0,10,0,0" />
+                    <DatePicker Date="{Binding Birthday, Mode=TwoWay}" FontSize="Medium" >
+                        <DatePicker.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                        </DatePicker.Behaviors>
+                    </DatePicker>
+                </StackLayout>                
+
+                <StackLayout BackgroundColor="White" Padding="10" >
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                        <Label Text="Own a Gym membership?" FontSize="Medium" />
+                        <Switch IsToggled="{Binding GymAccess, Mode=TwoWay}" HorizontalOptions="EndAndExpand" >
+                            <Switch.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding EntryChanged}" />
+                            </Switch.Behaviors>
+                        </Switch>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

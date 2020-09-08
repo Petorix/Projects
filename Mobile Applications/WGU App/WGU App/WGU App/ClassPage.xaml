@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WGU_App.ClassPage">
+
+    <StackLayout  Margin="15, 0" >
+        <Label Text="Edit Class" Margin="0, 20, 0, 0" HorizontalOptions="EndAndExpand" x:Name="EditLabel" />
+        <Label Text="Class" FontSize="Title"  />
+        <Grid  Margin="10, 0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Title:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="0" />
+            <Entry Placeholder="Class Title"  BackgroundColor="#EEEEEE" Grid.Column="1" Grid.Row="0" x:Name="TitleEntry" />
+
+            <Label Text="Dates:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="1" />
+            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <DatePicker VerticalOptions="Center" FontSize="Small" IsEnabled="True" x:Name="StartDate" />
+                <Label Text="-" VerticalOptions="Center" />
+                <DatePicker VerticalOptions="Center" FontSize="Small" x:Name="EndDate" />
+            </StackLayout>
+
+            <Label Text="Status:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="2" />
+            <Picker Grid.Column="1" Grid.Row="2" x:Name="StatusPicker" Title="Select a Status" />
+        </Grid>
+        <BoxView HeightRequest="3" BackgroundColor="#002F51" Margin="0, 15" />
+        
+        <Label Text="Instructor" FontSize="Title" />
+        <Grid  Margin="10, 0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Name:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="0" />
+            <Entry Placeholder="Instructor Name"  BackgroundColor="#EEEEEE" Grid.Column="1" Grid.Row="0" x:Name="NameEntry" />
+
+            <Label Text="Phone:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="1" />
+            <Entry Placeholder="Phone Number"  BackgroundColor="#EEEEEE" Grid.Column="1" Grid.Row="1" 
+                   Keyboard="Numeric" x:Name="PhoneEntry"/>
+
+            <Label Text="Email:" FontSize="Body" VerticalOptions="Center" Grid.Column="0" Grid.Row="2" />
+            <Entry Placeholder="Valid Email"  BackgroundColor="#EEEEEE" Grid.Column="1" Grid.Row="2" 
+                   x:Name="EmailEntry" 
+                   Keyboard="Email"/>
+        </Grid>
+        <BoxView HeightRequest="3" BackgroundColor="#002F51" Margin="0, 15" />
+        
+        <Label Text="Assessments" FontSize="Title" />
+        <StackLayout Margin="10, 0">
+            <StackLayout x:Name="TestsHolder" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" x:Name="AddAssessmentButton" Scale="0.75" HorizontalOptions="EndAndExpand" 
+                        Clicked="AddAssessmentButton_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+        <BoxView HeightRequest="3" BackgroundColor="#002F51" Margin="0, 15" />
+        
+        <Label Text="Notifications" FontSize="Title" />
+        <Grid  Margin="40, 20, 40, 0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Remind me of start and end dates for this course?" FontSize="Body" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" />
+            <Switch Grid.Column="1" Grid.Row="0" IsToggled="True" x:Name="NotifySwitch" />
+        </Grid>
+        <BoxView HeightRequest="3" BackgroundColor="#002F51" Margin="0, 15" />
+        
+        <Label Text="Notes" FontSize="Title" />
+        <StackLayout>
+            <Editor Grid.Column="1" Grid.Row="0" AutoSize="TextChanges"
+                   HorizontalOptions="FillAndExpand" x:Name="NoteEditor"/>
+
+            <Button Text="Share Note" x:Name="ShareNoteButton" Scale="0.75" Font="12"
+                        HorizontalOptions="EndAndExpand" Clicked="ShareNoteButton_Clicked" />
+        </StackLayout>
+
+        <StackLayout x:Name="EditButtons" Margin="0, 15">
+            <Label Text="Error" x:Name="ErrorMessageLabel" TextColor="#8E1010" IsVisible="False" />
+            <StackLayout Orientation="Horizontal" >
+                <Button Text="Delete" x:Name="DeleteClassButton" 
+                    HorizontalOptions="StartAndExpand" Clicked="DeleteClassButton_Clicked" />
+                <Button Text="Save" x:Name="SaveClassButton" Clicked="SaveClassButton_Clicked" />
+                <Button Text="Cancel" x:Name="CancelClassButton" Clicked="CancelClassButton_Clicked"  />
+            </StackLayout>
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>

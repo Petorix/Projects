@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFitnessApp.Views.MealsView" 
+             Title="{Binding Title}"
+             xmlns:model="clr-namespace:MyFitnessApp.Models"
+             xmlns:vm="clr-namespace:MyFitnessApp.ViewModels" 
+             Shell.NavBarIsVisible="True" >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Meal" Command="{Binding MealDetailCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="{StaticResource OffWhite}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" BackgroundColor="White">
+                    <SearchBar HorizontalOptions="Center" Placeholder="Search meals..." SearchCommand="{Binding SearchCommand}" Text="{Binding SearchString, Mode=TwoWay}" />
+                    <BoxView />
+                    <ScrollView  x:DataType="vm:MealsVM" >
+                        <CollectionView SelectionMode="None" ItemsSource="{Binding Meals}" BackgroundColor="{StaticResource OffWhite}" HeightRequest="{Binding CollectionViewHeight}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout x:DataType="model:Meals" >
+                                        <StackLayout Orientation="Horizontal" Padding="20,25,70,25" Margin="0,0,0,5" BackgroundColor="White" >
+                                            <ImageButton Source="menu.png" WidthRequest="{OnPlatform iOS=20, Android=22}" BackgroundColor="White" Opacity=".6" Padding="0,0,7,0" 
+                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MealsVM}}, Path=MenuIconCommand}" CommandParameter="{Binding .}"/>
+                                            <Label Text="{Binding MealName}" VerticalOptions="Center" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="18" Padding="15,0,0,0" />
+                                            <Label Text="{Binding Calories}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16" />
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MealsVM}}, Path=EatCommand}"
+                                                                      CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>        
+    </ContentPage.Content>
+</ContentPage>

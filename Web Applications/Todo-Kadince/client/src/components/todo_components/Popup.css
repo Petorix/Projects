@@ -1,0 +1,38 @@
+.react-datepicker-wrapper {
+  display: block;
+}
+
+#complete-button {
+  color: #646464;
+  background-color: white;
+  border-color: white;
+}
+
+#complete-button:focus {
+  border-color: white;
+}
+
+.flex-wrapper {
+  display: flex;
+}
+
+.push-right {
+  display: flex;
+  margin: auto 10px auto auto;
+}
+
+.bottom-button {
+  background-color: #5e45d3;
+  border-color: #5e45d3;
+  margin-right: 10px;
+}
+
+.cancel-button {
+  display: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .cancel-button {
+    display: block;
+  }
+}

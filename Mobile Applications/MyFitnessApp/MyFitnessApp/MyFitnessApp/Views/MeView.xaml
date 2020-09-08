@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFitnessApp.Views.MeView"
+             Title="{Binding Title}" 
+             xmlns:vm="clr-namespace:MyFitnessApp.ViewModels"
+             xmlns:model="clr-namespace:MyFitnessApp.Models"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms" >
+    
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource OffWhite}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" >
+                <StackLayout Orientation="Horizontal" Padding="30,15,30,20" Spacing="5"  VerticalOptions="Start" BackgroundColor="White">
+                    <Frame HasShadow="true" Padding="0" Margin="0" VerticalOptions="Center" HorizontalOptions="Start" IsClippedToBounds="True" >
+                        <Frame.CornerRadius>
+                            <OnPlatform x:TypeArguments="x:Single">
+                                <On Platform="iOS" Value="50"/>
+                                <On Platform="Android" Value="50"/>
+                            </OnPlatform>
+                        </Frame.CornerRadius>
+                        <Frame.Content>
+                            <Image Source="user.png" WidthRequest="{OnPlatform iOS=80, Android=90}" Opacity=".8" />
+                        </Frame.Content>
+                    </Frame>
+                    <Label Text="{Binding UserName}" FontSize="25" VerticalOptions="Center" HorizontalOptions="Center" Margin="25,0,0,0" />
+                </StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeVM}}, Path=UserTapCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout Grid.Row="1" >
+                <StackLayout Padding="30,10,30,15" Spacing="5" VerticalOptions="Start" BackgroundColor="White" >
+                    <Label Text="My goal" FontSize="18" HorizontalOptions="Start" Padding="0,0,0,10"/>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="StartAndExpand" Padding="10,0,0,0" >
+                            <Label Text="175 lbs" HorizontalOptions="Center" FontSize="12" />
+                            <Label Text="By Dec. 2020" HorizontalOptions="Center" FontSize="12" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Text="2,000" HorizontalOptions="Center" FontSize="12" />
+                            <Label Text="Calories / Day" HorizontalOptions="Center" FontSize="12" />
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand" Padding="0,0,0,10" >
+                            <Label Text="1 Workout" HorizontalOptions="Center" FontSize="12" />
+                            <Label Text="30 min each day" HorizontalOptions="Center" FontSize="12" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeVM}}, Path=GoalTapCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout Grid.Row="2" >
+                <StackLayout Padding="30,10,30,15" Spacing="5" VerticalOptions="Start" BackgroundColor="White" HeightRequest="175" >
+                    <Label Text="Progress and history" FontSize="18" HorizontalOptions="Start" Padding="0,0,0,10" />
+                    <progressBar:SfCircularProgressBar HeightRequest="300" TranslationY="-30" Progress="0" ProgressColor="#2CBA00" TrackColor="#CCC" 
+                                                        StartAngle="180" EndAngle="360">
+                        <progressBar:SfCircularProgressBar.Content>
+                            <StackLayout HorizontalOptions="EndAndExpand" Padding="0,0,0,30" >
+                                <Label Text="Weight Lost" HorizontalOptions="Center" FontSize="15" />
+                            </StackLayout>
+                        </progressBar:SfCircularProgressBar.Content>
+                    </progressBar:SfCircularProgressBar>
+                </StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MeVM}}, Path=ProgressTapCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout Grid.Row="3">
+                <StackLayout Padding="30,10,30,15" Spacing="5" VerticalOptions="Start" BackgroundColor="White" HeightRequest="175" >
+                    <Label Text="Preferences" FontSize="18" HorizontalOptions="Start" Padding="0,0,0,10" />
+                    <StackLayout Padding="15,0,15,0">
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Text="Goal reminders?" FontSize="Medium" />
+                            <Switch IsToggled="{Binding Notifications_Goals, Mode=TwoWay}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Text="Meal tracking reminders?" FontSize="Medium" />
+                            <Switch IsToggled="{Binding Notifications_Meals, Mode=TwoWay}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Text="Fitness tracking reminders?" FontSize="Medium" />
+                            <Switch IsToggled="{Binding Notifications_Fitness, Mode=TwoWay}" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                    
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
