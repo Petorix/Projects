@@ -1,0 +1,16 @@
+.navbar {
+  display: none;
+}
+
+.error404 {
+  opacity: 0.8;
+  object-fit: cover;
+}
+
+.error-wrapper {
+  padding-top: 50px;
+  font-family: CuteFont;
+  font-size: 50pt;
+  align-content: center;
+  text-align: center;
+}
